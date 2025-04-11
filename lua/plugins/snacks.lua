@@ -20,6 +20,9 @@ return {
       picker = {
         hidden = true,
         enabled = true,
+        grep = {
+          hidden = true,
+        },
         files = {
           hidden = true,
         },
