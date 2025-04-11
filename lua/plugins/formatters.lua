@@ -1,32 +1,46 @@
 return {
   "stevearc/conform.nvim",
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
-    vim.g.disable_autoformat = false
-    require("conform").setup({
+    local conform = require("conform")
+
+    conform.setup({
       formatters_by_ft = {
-        lua = { "stylua", stop_after_first = true },
-        -- json = { "prettier" },
-        -- markdown = { "prettier" },
+        css = { "prettier" },
+        html = { "prettier" },
+        json = { "prettier" },
+        yaml = { "prettier" },
+        lua = { "stylua" },
+        markdown = { "prettier" },
       },
-      format_on_save = function(bufnr)
-        if vim.g.disable_autoformat then
-          return
-        end
-        return {
-          timeout_ms = 500,
-          lsp_format = "fallback",
-        }
-      end,
+      -- format_on_save = {
+      -- 	lsp_fallback = true,
+      -- 	async = false,
+      -- 	timeout_ms = 1000,
+      -- },
     })
 
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      pattern = "*",
-      callback = function(args)
-        if vim.g.disable_autoformat then
-          return
-        end
-        require("conform").format({ bufnr = args.buf })
-      end,
-    })
+    -- Configure individual formatters
+    conform.formatters.prettier = {
+      args = {
+        "--stdin-filepath",
+        "$FILENAME",
+        "--tab-width",
+        "4",
+        "--use-tabs",
+        "false",
+      },
+    }
+
+    vim.keymap.set({ "n", "v" }, "<leader>mp", function()
+      conform.format({
+        lsp_fallback = true,
+
+
+
+        async = false,
+        timeout_ms = 1000,
+      })
+    end, { desc = " Prettier Format whole file or range (in visual mode) with" })
   end,
 }
