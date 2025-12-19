@@ -1,7 +1,7 @@
 return {
     -- Surround
     {
-        "echasnovski/mini.surround",
+        "nvim-mini/mini.surround",
         event = { "BufReadPre", "BufNewFile" },
         opts = {
             -- Add custom surroundings to be used on top of builtin ones. For more
@@ -48,7 +48,7 @@ return {
     },
     -- Get rid of whitespace
     {
-        "echasnovski/mini.trailspace",
+        "nvim-mini/mini.trailspace",
         event = { "BufReadPost", "BufNewFile" },
         config = function()
             local miniTrailspace = require("mini.trailspace")
@@ -71,7 +71,7 @@ return {
     { 'nvim-mini/mini.nvim', version = '*' },
     -- Split & join
     {
-        "echasnovski/mini.splitjoin",
+        "nvim-mini/mini.splitjoin",
         config = function()
             local miniSplitJoin = require("mini.splitjoin")
             miniSplitJoin.setup({
