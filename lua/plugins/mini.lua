@@ -67,6 +67,8 @@ return {
             })
         end,
     },
+    -- auto pairs
+    { 'nvim-mini/mini.nvim', version = '*' },
     -- Split & join
     {
         "echasnovski/mini.splitjoin",
