@@ -4,7 +4,7 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-      bigfile = {enabled = true}
+      bigfile = {enabled = true },
       explorer = {
         enabled = true,
         layout = {
@@ -15,7 +15,7 @@ return {
         enabled = true,
         exclude = { "latex" },
       },
-      indent = { enabled = true}
+      indent = { enabled = true},
       picker = {
         hidden = true,
         enabled = true,
