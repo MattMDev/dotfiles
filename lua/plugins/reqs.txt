@@ -1,14 +1,15 @@
 auto pairs - done
-lspconfig (code language servers)
 snacks (explorer / file search / grep)
 telescope (code search)
-TODO - formatters (code / json / yaml / markdown / etc..)
-TODO - theme (colorscheme) 
-TODO - lualine (status bar line below) - adjust theme for local machine
+mini (surround / trailing whitespace / split-join)
+flash - setup done - consider searching by word start
+nvim-treesitter(syntax highlighting)
+auto completions (cmp)
+
 TODO - handle multiple buffers (tabs)
-TODO - auto completions (cmp)
-TODO - nvim-treesitter(syntax highlighting)
-TODO - flash 
-TODO - mini (surround / trailing whitespace / split-join)
+TODO - lspconfig (code language servers)
+TODO - formatters (code / json / yaml / markdown / etc..)
+TODO - theme (colorscheme)
+TODO - lualine (status bar line below) - adjust theme for local machine
 TODO - git integration (lazygit / fuigitive / gitsigns)
 optional - markdown_preview

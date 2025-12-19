@@ -121,7 +121,7 @@ return {
         img_dirs = { "img", "images", "assets", "static", "public", "media", "attachments", "Archives/All-Vault-Images/", "~/Library", "~/Downloads" },
       },
       dashboard = {
-        enabled = true,
+        enabled = false,
         sections = {
           { section = "header" },
           { section = "keys",   gap = 1, padding = 1 },

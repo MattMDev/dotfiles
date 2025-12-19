@@ -1,21 +1,34 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+-- Move selected line / block of text in visual mode
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 
-vim.opt.backspace = '2'
-vim.opt.showcmd = true
-vim.opt.laststatus = 2
-vim.opt.autowrite = true
-vim.opt.cursorline = true
-vim.opt.autoread = true
+-- better indenting
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
--- use spaces for tabs and whatnot
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.shiftround = true
-vim.opt.expandtab = true
+-- paste over currently selected text without yanking it
+vim.keymap.set("v", "p", '"_dp')
+vim.keymap.set("v", "P", '"_dP')
 
-vim.cmd [[ set noswapfile ]]
-vim.cmd [[ set termguicolors ]]
+-- Move to start/end of line
+vim.keymap.set({ "n", "x", "o" }, "H", "^", opts)
+vim.keymap.set({ "n", "x", "o" }, "L", "g_", opts)
 
---Line numbers
-vim.wo.number = true
+
+-- Panes resizing
+vim.keymap.set("n", "+", ":vertical resize +5<CR>")
+vim.keymap.set("n", "_", ":vertical resize -5<CR>")
+vim.keymap.set("n", "=", ":resize +5<CR>")
+vim.keymap.set("n", "-", ":resize -5<CR>")
+
+-- Center Cursor
+vim.keymap.set("n", "n", "nzzv", opts)
+vim.keymap.set("n", "N", "Nzzv", opts)
+vim.keymap.set("n", "*", "*zzv", opts)
+vim.keymap.set("n", "#", "#zzv", opts)
+vim.keymap.set("n", "g*", "g*zz", opts)
+vim.keymap.set("n", "g#", "g#zz", opts)
+vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
+vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
+
+vim.keymap.set("n", "<C-c>", ":nohlsearch<CR>", opts)
