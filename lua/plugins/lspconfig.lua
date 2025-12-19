@@ -12,7 +12,34 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
-          "lua_ls",
+          -- language servers
+             "lua_ls",
+                    "gopls",
+                    "rust-analyzer",
+                    "bashls",
+                    "pyright",
+                    "cssls",
+                    "html",
+                    "jsonls",
+                    "yamlls",
+
+                    -- Linters
+                    "luacheck",
+                    "golangci-lint",
+                    "shellcheck",
+                    "markdownlint",
+                    "yamllint",
+                    "jsonlint",
+                    "htmlhint",
+                    "ruff",
+
+                    -- Formatters
+                    "stylua",
+                    "goimports",
+                    "prettier",
+                    "black",
+                    "isort",
+                    "shfmt",
         },
       })
     end,
@@ -41,5 +68,6 @@ return {
               },
             },
           })
-  end
+   end
+  }
 }

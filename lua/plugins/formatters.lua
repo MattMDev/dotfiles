@@ -12,14 +12,8 @@ return {
         yaml = { "prettier" },
         lua = { "stylua" },
         markdown = { "prettier" },
-        go = { "gofmt" },
-        python = { "black" }
+        go = { "gofmt" }
       },
-      -- format_on_save = {
-      -- 	lsp_fallback = true,
-      -- 	async = false,
-      -- 	timeout_ms = 1000,
-      -- },
     })
 
     -- Configure individual formatters
@@ -33,16 +27,5 @@ return {
         "false",
       },
     }
-
-    vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-      conform.format({
-        lsp_fallback = true,
-
-
-
-        async = false,
-        timeout_ms = 1000,
-      })
-    end, { desc = " Prettier Format whole file or range (in visual mode) with" })
   end,
 }
