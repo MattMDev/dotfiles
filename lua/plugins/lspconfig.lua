@@ -18,37 +18,28 @@ return {
     end,
   },
   {
-
-    "hrsh7th/cmp-nvim-lsp",
-    dependencies = {
-      "hrsh7th/nvim-cmp",
-    },
-  },
-  {
     "neovim/nvim-lspconfig",
+    dependencies = { 'saghen/blink.cmp' },
+
     config = function()
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      local capabilities = require('blink.cmp').get_lsp_capabilities()
+      local lspconfig = require('lspconfig')
 
-      local lspconfig = require("lspconfig")
-      local configs = require("lspconfig.configs")
-
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-        -- cmd = { "lua_ls" },
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim" }, -- Recognize 'vim' as a global variable
+      lspconfig['lua_ls'].setup({
+            capabilities = capabilities,
+            settings = {
+              Lua = {
+                diagnostics = {
+                  globals = { "vim" }, -- Recognize 'vim' as a global variable
+                },
+                workspace = {
+                  library = vim.api.nvim_get_runtime_file("", true), -- Include Neovim runtime files
+                },
+                telemetry = {
+                  enable = false,
+                },
+              },
             },
-            workspace = {
-              library = vim.api.nvim_get_runtime_file("", true), -- Include Neovim runtime files
-            },
-            telemetry = {
-              enable = false,
-            },
-          },
-        },
-      })
-    end,
-  },
+          })
+  end
 }
