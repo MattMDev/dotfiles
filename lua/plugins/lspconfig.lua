@@ -50,9 +50,12 @@ return {
 
     config = function()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
-      local lspconfig = require('lspconfig')
+      
+      vim.lsp.config('*', {
+        capabilities = capabilities
+      })
 
-      lspconfig['lua_ls'].setup({
+      vim.lsp.config('lua_ls', {
             capabilities = capabilities,
             settings = {
               Lua = {
@@ -68,6 +71,8 @@ return {
               },
             },
           })
+
+          vim.lsp.enable('*')
    end
   }
 }
