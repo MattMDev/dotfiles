@@ -1,19 +1,18 @@
 return {
   {
     "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup({
-        PATH = "prepend",
-      })
-    end,
   },
   {
-    "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          -- language servers
-             "lua_ls",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        lazy = false,
+        dependencies = {
+            "mason-org/mason-lspconfig.nvim",
+        },
+        config = function()
+            require("mason-tool-installer").setup({
+                ensure_installed = {
+                    -- Language Servers
+                    "lua_ls",
                     "gopls",
                     "rust-analyzer",
                     "bashls",
@@ -31,7 +30,9 @@ return {
                     "yamllint",
                     "jsonlint",
                     "htmlhint",
+                    "stylelint",
                     "ruff",
+                    "mypy",
 
                     -- Formatters
                     "stylua",
@@ -40,12 +41,11 @@ return {
                     "black",
                     "isort",
                     "shfmt",
-        },
-      })
-    end,
-  },
+                },
+            })
+        end,
+    }
   {
-    "neovim/nvim-lspconfig",
     dependencies = { 'saghen/blink.cmp' },
 
     config = function()
