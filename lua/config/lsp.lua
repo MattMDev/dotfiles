@@ -19,9 +19,6 @@ local function setup_keymaps(bufnr)
     map("i", "<C-k>", vim.lsp.buf.signature_help, "Signature help")
 
     -- Diagnostics
-    map("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, "Previous diagnostic")
-    map("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, "Next diagnostic")
-    map("n", "<leader>cd", vim.diagnostic.open_float, "Show diagnostic")
     map("n", "<leader>cl", vim.diagnostic.setloclist, "Diagnostics to loclist")
 
     -- Inlay hints toggle (useful for manual control)
