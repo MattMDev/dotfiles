@@ -1,9 +1,4 @@
 return {
-    -- Explorer
-    {
-        { 'nvim-mini/mini.files', version = '*' },
-        vim.keymap.set({ "n", "v", "x" }, "<leader>e", "<CR>MiniFiles.open()<CR>", { desc = "Open Explorer" })
-    },
     -- Surround
     {
         "nvim-mini/mini.surround",
