@@ -44,7 +44,7 @@ return {
                 },
             })
         end,
-    }
+    },
   {
     dependencies = { 'saghen/blink.cmp' },
 
