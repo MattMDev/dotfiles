@@ -54,7 +54,7 @@ return {
       })
 
       vim.lsp.config('lua_ls', {
-          cmd = {lua-language-server},
+          cmd = {'lua-language-server'},
             capabilities = capabilities,
             settings = {
               Lua = {
