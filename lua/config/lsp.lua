@@ -21,6 +21,9 @@ local function setup_keymaps(bufnr)
     -- Diagnostics
     map("n", "<leader>cl", vim.diagnostic.setloclist, "Diagnostics to loclist")
 
+    -- Formatting
+    map("n", "<leader>ff", vim.lsp.buf.format, "Format file")
+
     -- Inlay hints toggle (useful for manual control)
     if vim.lsp.inlay_hint then
         map("n", "<leader>ih", function()
