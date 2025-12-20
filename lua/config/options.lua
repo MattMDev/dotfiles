@@ -24,6 +24,10 @@ vim.opt.showcmd = false
 vim.opt.ruler = true
 -- vim.o.winborder = 'rounded'
 
+-- splits
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
 -- search
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
