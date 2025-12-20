@@ -1,5 +1,4 @@
 return {
-  -- NOTE : tokyonight
   {
     "folke/tokyonight.nvim",
     name = "folkeTokyonight",

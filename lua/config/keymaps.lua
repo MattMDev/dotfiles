@@ -32,3 +32,6 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
 vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
 
 vim.keymap.set("n", "<C-c>", ":nohlsearch<CR>", opts)
+
+-- Explorer
+vim.keymap.set("n", "<leader>e", "<CR> Oil <CR>", opts)
