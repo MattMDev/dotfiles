@@ -2,6 +2,10 @@ return {
     -- Explorer
     {
         { 'nvim-mini/mini.files', version = '*' },
+        config = function() 
+            miniFiles = require("mini.files")
+            vim.keymap.set({ "n", "v", "x" }, "<leader>e", function() miniFiles.open() end, { desc = "Open Explorer" })
+        end,
     },
     -- Surround
     {
