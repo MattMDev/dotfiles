@@ -32,3 +32,7 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
 vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
 
 vim.keymap.set("n", "<C-c>", ":nohlsearch<CR>", opts)
+
+-- Navigate in quickfix
+vim.keymap.set("n", "<M-k>", ":cnext", opts)
+vim.keymap.set("n", "<M-j>", ":cprevious", opts)
