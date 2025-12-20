@@ -1,6 +1,24 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason-lspconfig.nvim",
+    opts = {
+      -- list of servers for mason to install
+      ensure_installed = {
+        "lua_ls",
+        "gopls",
+        "rust-analyzer",
+        "bashls",
+        "pyright",
+        "cssls",
+        "html",
+        "jsonls",
+        "yamlls",
+      },
+    },
+    dependencies = {
+        { "mason-org/mason.nvim", opts = {} },
+        "neovim/nvim-lspconfig",
+    },
   },
   {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
