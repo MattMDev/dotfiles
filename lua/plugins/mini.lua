@@ -1,4 +1,8 @@
 return {
+    -- Explorer
+    {
+        { 'nvim-mini/mini.files', version = '*' },
+    },
     -- Surround
     {
         "nvim-mini/mini.surround",

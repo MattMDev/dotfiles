@@ -6,10 +6,7 @@ return {
     opts = {
       bigfile = {enabled = true },
       explorer = {
-        enabled = true,
-        layout = {
-          cycle = false,
-        }
+        enabled = false,
       },
       quickfile = {
         enabled = true,
@@ -34,8 +31,6 @@ return {
       },
     },
     keys = {
-      { "<leader>e",   function() require("snacks").explorer() end,                                       desc = "Open Snacks Explorer" },
-
       -- Snacks Picker
       { "<leader><leader>",  function() require("snacks").picker.files() end,                                   desc = "Find Files (Snacks Picker)" },
       { "<leader>fr",  function() require("snacks").picker.recent() end, desc = "Find Config File" },
