@@ -6,4 +6,13 @@ vim.lsp.config('lua_ls', {
     filetypes = {'lua'},
     capabilities = capabilities,
     })
+    settings = {
+               Lua = {
+                  workspace = { checkThirdParty = false, library = vim.api.nvim_get_runtime_file("", true) },
+                  telemetry = { enable = false },
+                  diagnostics = {
+                     globals = { "vim" },
+                  },
+               },
+            },
 }
