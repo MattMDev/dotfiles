@@ -12,7 +12,7 @@ return {
             require("mason-tool-installer").setup({
                 ensure_installed = {
                     -- Language Servers
-                    -- "lua_ls",
+                    "lua_ls",
                     "gopls",
                     "rust-analyzer",
                     "bashls",
