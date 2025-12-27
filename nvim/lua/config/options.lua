@@ -1,11 +1,10 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+vim.g.maplocalleader = " "
 
 -- Disable Built-in Plugins
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.opt.clipboard = "unnamedplus"
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
 vim.opt.updatetime = 100
@@ -22,7 +21,6 @@ vim.opt.breakindent = true
 vim.opt.showmode = false
 vim.opt.showcmd = false
 vim.opt.ruler = true
--- vim.o.winborder = 'rounded'
 
 -- splits
 vim.opt.splitbelow = true

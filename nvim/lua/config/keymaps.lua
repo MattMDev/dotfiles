@@ -6,6 +6,12 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
+-- Yanking to clipboard
+vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = "Yank to system clipboard" })
+
+-- delete and don't push to register
+vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]], { desc = "Yank to system clipboard" })
+
 -- paste over currently selected text without yanking it
 vim.keymap.set("v", "p", '"_dp')
 vim.keymap.set("v", "P", '"_dP')
