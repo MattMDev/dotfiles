@@ -8,7 +8,7 @@ LOCAL_DIR=$(pwd)
 
 # copy hyperland config
 rm -rf "${CONF_PATH}/hypr/"
-cp ./hypr/ "${CONF_PATH}/hypr"
+cp -r ./hypr/ "${CONF_PATH}/hypr"
 
 # apply symlinks
 ln -sf "${LOCAL_DIR}/.zshrc" ~/.zshrc
