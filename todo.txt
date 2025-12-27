@@ -1,5 +1,4 @@
 1. Improve bar (quickshell) configuration
 2. Improve notification (dunst) configuration + spotify support
 3. Allocate workspaces based on monitor amount (start with 2)
-4. Add dynamic wallpaper
-5. Fix layout issue! (not hebrew)
+4. Fix layout issue! (not hebrew)
