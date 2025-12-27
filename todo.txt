@@ -2,4 +2,4 @@
 2. Improve notification (dunst) configuration + spotify support
 3. Allocate workspaces based on monitor amount (start with 2)
 4. Add dynamic wallpaper
-5.
+5. Fix layout issue! (not hebrew)
