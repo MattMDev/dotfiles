@@ -3,10 +3,10 @@ duration = "30m"
 mode = "center"
 
 [DP-1]
-path = "/home/matan/.config/wallpapers/1st_monitor.png"
+path = "/home/matan/.config/wallpapers/2k/purple_sword.png"
 
 [DP-3]
-path = "/home/matan/.config/wallpapers/2nd_monitor.png"
+path = "/home/matan/.config/wallpapers/1080/chill_house.png"
 
 [HDMI-A-3]
-path = "/home/matan/.config/wallpapers/2nd_monitor.png"
+path = "/home/matan/.config/wallpapers/4k/vending_machine.png"
