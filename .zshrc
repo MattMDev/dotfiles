@@ -19,7 +19,7 @@ ZSH_CUSTOM='/home/matan/.oh-my-zsh'
 
 # Startup Script - TODO - switch with login manager
 if [ "$(tty)" = "/dev/tty1" ]; then
-    echo start-hyprland
+    start-hyprland
 fi
 
 
@@ -28,6 +28,9 @@ alias gs='git status'
 alias ga='git add'
 alias gcm='git commit -m'
 alias gp='git push'
+
+# Zoxide (smart cd)
+eval "$(zoxide init --cmd cd zsh)"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
