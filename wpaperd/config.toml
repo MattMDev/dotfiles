@@ -1,0 +1,9 @@
+[default]
+duration = "1m"
+mode = "center"
+
+[DP-1]
+path = "/home/matan/.config/wallpapers/1st_monitor.png"
+
+[DP-3]
+path = "/home/matan/.config/wallpapers/2nd_monitor.png"
