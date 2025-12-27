@@ -1,18 +1,19 @@
 return {
-    {
-  'stevearc/oil.nvim',
-  opts = {
-    view_options = {
-    -- Show files and directories that start with "."
-    show_hidden = true,
-  },
-  },
-  -- Optional dependencies
-  dependencies = { { "nvim-mini/mini.icons", opts = {} } },
-  -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
-  lazy = false,
+	{
+		"stevearc/oil.nvim",
+		dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+		config = function()
+			local oil = require("oil")
+			oil.setup({
+				view_options = {
+					-- Show files and directories that start with "."
+					show_hidden = true,
+				},
+			})
 
-  -- Open parent directory in current window
-  vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+			vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>")
+		end,
+		lazy = false,
+	},
 }
-}
+
