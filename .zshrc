@@ -29,8 +29,14 @@ alias ga='git add'
 alias gcm='git commit -m'
 alias gp='git push'
 
+# neovim
+alias nwd='nvim .'
+alias vim='nvim'
+
 # Zoxide (smart cd)
 eval "$(zoxide init --cmd cd zsh)"
+# Startship
+eval "$(starship init zsh)"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
