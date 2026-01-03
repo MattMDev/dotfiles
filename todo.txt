@@ -1,4 +1,5 @@
 1. Improve bar (quickshell) configuration
+    a. Add spotify integration (show currently played song)
 2. Improve notification (dunst) configuration + spotify support
 3. Allocate workspaces based on monitor amount (start with 2)
 4. Fix layout issue! (not hebrew)
