@@ -3,3 +3,9 @@
 2. Improve notification (dunst) configuration + spotify support
 3. Allocate workspaces based on monitor amount (start with 2)
 4. Fix layout issue! (not hebrew)
+
+Gaming focus
+1.install steam
+2.install bluetooth device manager
+3. connect DS5 controllers
+4. try them with steam big play mode
