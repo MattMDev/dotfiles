@@ -21,6 +21,11 @@ alias gp='git push'
 # neovim
 alias nwd='nvim .'
 
+alias ls='eza -l'
+alias ll='eza -l'
+alias l='ls -la'
+alias tree='eza -Ta'
+
 # Zoxide (smart cd)
 eval "$(zoxide init --cmd cd zsh)"
 
