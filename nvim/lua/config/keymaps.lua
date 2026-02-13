@@ -17,8 +17,8 @@ vim.keymap.set("v", "p", '"_dp')
 vim.keymap.set("v", "P", '"_dP')
 
 -- Move to start/end of line
-vim.keymap.set({ "n", "x", "o" }, "H", "^", opts)
-vim.keymap.set({ "n", "x", "o" }, "L", "g_", opts)
+-- vim.keymap.set({ "n", "x", "o" }, "H", "^", opts)
+-- vim.keymap.set({ "n", "x", "o" }, "L", "g_", opts)
 
 
 -- Panes resizing
