@@ -2,21 +2,15 @@
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH=$HOME/go/bin":$HOME/.cargo/bin":$PATH
 
-# Path to your Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-ZSH_THEME="robbyrussell"
-
 plugins=(
   git
-  zsh-autosuggestions
 )
 
-source $ZSH/oh-my-zsh.sh
+# Source plugins
+source "${HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # Environment Variables
 EDITOR='nvim'
-ZSH_CUSTOM='/home/matan/.oh-my-zsh'
 
 # Aliases
 alias gs='git status'
@@ -29,6 +23,7 @@ alias nwd='nvim .'
 
 # Zoxide (smart cd)
 eval "$(zoxide init --cmd cd zsh)"
+
 # Startship
 eval "$(starship init zsh)"
 
@@ -45,3 +40,6 @@ export NVM_DIR="$HOME/.nvm"
 if [ "$(tty)" = "/dev/tty1" ]; then
     hyprland
 fi
+
+# opencode
+export PATH=/home/matan/.opencode/bin:$PATH

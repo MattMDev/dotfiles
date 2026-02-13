@@ -10,7 +10,7 @@ vim.keymap.set("v", ">", ">gv")
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = "Yank to system clipboard" })
 
 -- delete and don't push to register
-vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]], { desc = "Yank to system clipboard" })
+vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]], { desc = "Delete without copying" })
 
 -- paste over currently selected text without yanking it
 vim.keymap.set("v", "p", '"_dp')
@@ -39,6 +39,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
 
 vim.keymap.set("n", "<C-c>", ":nohlsearch<CR>", opts)
 
+-- TODO - Diff
 -- Navigate in quickfix
 vim.keymap.set("n", "<M-k>", ":cnext", opts)
 vim.keymap.set("n", "<M-j>", ":cprevious", opts)
