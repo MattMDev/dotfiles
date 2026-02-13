@@ -40,6 +40,8 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
 vim.keymap.set("n", "<C-c>", ":nohlsearch<CR>", opts)
 
 -- TODO - Diff
+vim.keymap.set("n", "<leader>D", ":DiffviewOpen ", opts)
+
 -- Navigate in quickfix
 vim.keymap.set("n", "<M-k>", ":cnext", opts)
 vim.keymap.set("n", "<M-j>", ":cprevious", opts)
