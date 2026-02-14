@@ -8,6 +8,11 @@ CONF_PATH="${HOME}/.config/"
 # copy hyperland config
 cp ./hypr/* "${CONF_PATH}/hypr"
 
+# reload hyprland if running
+if pgrep -x hyprland > /dev/null; then
+    hyprctl reload
+fi
+
 # apply symlinks
 # ln -sf "${LOCAL_DIR}/.zshrc" ~/.zshrc
 # ln -sf "${LOCAL_DIR}/kitty/" "${CONF_PATH}/kitty"
