@@ -14,6 +14,7 @@ if pgrep -x hyprland > /dev/null; then
 fi
 
 # apply symlinks
+# LOCAL_DIR=$(pwd)
 # ln -sf "${LOCAL_DIR}/.zshrc" ~/.zshrc
 # ln -sf "${LOCAL_DIR}/kitty/" "${CONF_PATH}/kitty"
 # ln -sf "${LOCAL_DIR}/wofi/" "${CONF_PATH}/wofi"
