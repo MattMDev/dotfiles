@@ -1,7 +1,10 @@
+Basic:
+1. Fix layout issue! (no hebrew)
+2. wpaperd exec-once doesn't work for some reason
+3. fix audio issue from TV HDMI 
+
+Advanced
 1. Improve bar (quickshell) configuration
     a. Add spotify integration (show currently played song)
 2. Improve notification (dunst) configuration + spotify support
-3. Fix layout issue! (no hebrew)
-4. wpaperd exec-once doesn't work for some reason
-5. fix audio issue from TV HDMI 
-6. opening spotify on second monitor on boot doesn't work
+3. opening spotify on second monitor on boot doesn't work
