@@ -23,6 +23,7 @@ alias gs='git status'
 alias ga='git add'
 alias gcm='git commit -m'
 alias gp='git push'
+alias clean='git reset --hard; git pull --rebase'
 
 # neovim
 alias nwd='nvim .'
