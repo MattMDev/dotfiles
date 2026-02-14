@@ -9,6 +9,12 @@ plugins=(
 # Source plugins
 source "${HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY APPEND_HISTORY HIST_IGNORE_ALL_DUPS HIST_SAVE_NO_DUPS HIST_VERIFY
+
 # Environment Variables
 EDITOR='nvim'
 
