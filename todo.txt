@@ -1,7 +1,6 @@
 Basic:
 1. Fix layout issue! (no hebrew)
-2. wpaperd exec-once doesn't work for some reason
-3. fix audio issue from TV HDMI 
+2. fix audio issue from TV HDMI 
 
 Advanced
 1. Improve bar (quickshell) configuration
