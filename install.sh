@@ -6,7 +6,7 @@
 CONF_PATH="${HOME}/.config/"
 
 # copy hyperland config
-cp -r ./hypr/hyprland.conf "${CONF_PATH}/hypr"
+cp ./hypr/* "${CONF_PATH}/hypr"
 
 # apply symlinks
 # ln -sf "${LOCAL_DIR}/.zshrc" ~/.zshrc

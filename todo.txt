@@ -1,12 +1,7 @@
 1. Improve bar (quickshell) configuration
     a. Add spotify integration (show currently played song)
 2. Improve notification (dunst) configuration + spotify support
-3. Allocate workspaces based on monitor amount (start with 2)
-4. Fix layout issue! (not hebrew)
-5. wallpaper exec-once doesn't work for some reason
-
-Gaming focus
-1.install steam - done
-2.install bluetooth device manager - done
-3. connect DS5 controllers
-4. try them with steam big play mode
+3. Fix layout issue! (no hebrew)
+4. wpaperd exec-once doesn't work for some reason
+5. fix audio issue from TV HDMI 
+6. opening spotify on second monitor on boot doesn't work
