@@ -18,6 +18,9 @@ cp -r ./hypr/hyprland.conf "${CONF_PATH}/hypr"
 
 exit
 
+# fix time issues
+sudo timedatectl set-ntp true
+
 # installed libraries
 sudo pacman -Syu \
 base-devel \
