@@ -3,7 +3,7 @@
 # Install packages
 # Install yay
 
-CONF_PATH="${HOME}/.config/"
+CONF_PATH="${HOME}/.config"
 
 # copy hyperland config
 cp ./hypr/* "${CONF_PATH}/hypr"
