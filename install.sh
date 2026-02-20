@@ -59,5 +59,6 @@ wofi \
 xf86-video-vesa \
 yay \
 zoxide \
-zsh 
-
+zsh \
+qutebrowser \
+python-adblock
