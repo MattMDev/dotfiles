@@ -52,8 +52,6 @@ config.bind('gm', 'tab-move')
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 c.colors.webpage.darkmode.policy.images = 'never'
-config.set('colors.webpage.darkmode.enabled', False, 'file://*')
-
 # styles, cosmetics
 # c.content.user_stylesheets = ["~/.config/qutebrowser/styles/youtube-tweaks.css"]
 c.tabs.padding = {'top': 5, 'bottom': 5, 'left': 9, 'right': 9}
@@ -72,6 +70,7 @@ c.fonts.web.family.standard = 'monospace'
 # privacy - adjust these settings based on your preference
 # config.set("completion.cmd_history_max_items", 0)
 # config.set("content.private_browsing", True)
+config.set("content.blocking.method", "both")
 config.set("content.webgl", False, "*")
 config.set("content.canvas_reading", False)
 config.set("content.geolocation", False)
