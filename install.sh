@@ -21,6 +21,7 @@ fi
 # ln -sf "${LOCAL_DIR}/wallpapers/" "${CONF_PATH}/wallpapers"
 # ln -sf "${LOCAL_DIR}/dunst/" "${CONF_PATH}/dunst"
 # ln -sf "${LOCAL_DIR}/wpaperd/" "${CONF_PATH}/wpaperd"
+# ln -sf "${LOCAL_DIR}/qutebrowser/" "${CONF_PATH}/qutebrowser"
 
 exit
 
