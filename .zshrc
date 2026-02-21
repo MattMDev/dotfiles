@@ -28,6 +28,9 @@ alias gcm='git commit -m'
 alias gp='git push'
 alias clean='git reset --hard; git pull --rebase'
 
+# AI
+alias oc='opencode'
+
 # neovim
 alias nwd='nvim .'
 
