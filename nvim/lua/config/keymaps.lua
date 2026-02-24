@@ -43,8 +43,8 @@ vim.keymap.set("n", "<C-c>", ":nohlsearch<CR>", opts)
 vim.keymap.set("n", "<leader>D", ":DiffviewOpen ", opts)
 
 -- Navigate in quickfix
-vim.keymap.set("n", "<D-k>", ":cnext", opts)
-vim.keymap.set("n", "<D-j>", ":cprevious", opts)
+vim.keymap.set("n", "<D-k>", "<cmd>cnext<cr>", opts)
+vim.keymap.set("n", "<D-j>", "<cmd>cprevious<cr>", opts)
 
 -- Tabs
 vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<cr>", opts)
