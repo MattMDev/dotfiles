@@ -9,3 +9,9 @@ if [ "$input" = "pc" ]; then
 else
     hyprctl keyword monitor "DP-1,disable"
 fi
+
+# kill and respawn quickshell bar
+pkill -f "quickshell/bar.qml" || true
+sleep 0.5
+hyprctl dispatch workspace 1
+qs -p ~/dev/dotfiles/quickshell/bar.qml &
