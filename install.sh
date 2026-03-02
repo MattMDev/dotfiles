@@ -23,6 +23,7 @@ LOCAL_DIR=$(pwd)
 # ln -sf "${LOCAL_DIR}/wpaperd/" "${CONF_PATH}/wpaperd"
 # ln -sf "${LOCAL_DIR}/qutebrowser/" "${CONF_PATH}/qutebrowser"
 # ln -sf "${LOCAL_DIR}/opencode/opencode.json" "${CONF_PATH}/opencode/opencode.json"
+ln -sf "${LOCAL_DIR}/qutebrowser/greasemonkey" "${HOME}/.local/share/qutebrowser/greasemonkey"
 
 exit
 
