@@ -52,3 +52,16 @@ vim.keymap.set("n", "<leader>td", "<cmd>tabnew %<cr>", opts)
 vim.keymap.set("n", "<leader>tc", "<cmd>tabclose<cr>", opts)
 vim.keymap.set("n", "<D-l>", "<cmd>tabnext<cr>", opts)
 vim.keymap.set("n", "<D-h>", "<cmd>tabprev<cr>", opts)
+
+-- File paths
+vim.keymap.set("n", "<leader>fp", function()
+  local relative_path = vim.fn.expand('%:.')
+  vim.fn.setreg('+', relative_path)
+  print("Copied: " .. relative_path)
+end, { desc = "Copy relative file path" })
+
+vim.keymap.set("n", "<leader>fP", function()
+  local absolute_path = vim.fn.expand('%:p')
+  vim.fn.setreg('+', absolute_path)
+  print("Copied: " .. absolute_path)
+end, { desc = "Copy absolute file path" })
