@@ -47,6 +47,7 @@ config.bind('qm', 'macro-record')
 config.bind('gJ', 'tab-move +')
 config.bind('gK', 'tab-move -')
 config.bind('gm', 'tab-move')
+config.bind('F', 'fake-key f')
 
 # dark mode setup
 c.colors.webpage.darkmode.enabled = True
@@ -60,12 +61,12 @@ c.tabs.indicator.width = 0 # no tab indicators
 c.tabs.width = '7%'
 
 # fonts
-c.fonts.default_family = []
-c.fonts.default_size = '13pt'
-c.fonts.web.family.fixed = 'monospace'
-c.fonts.web.family.sans_serif = 'monospace'
-c.fonts.web.family.serif = 'monospace'
-c.fonts.web.family.standard = 'monospace'
+c.fonts.default_family = 'JetBrains Mono'
+c.fonts.default_size = '14pt'
+c.fonts.web.family.fixed = 'JetBrains Mono'
+c.fonts.web.family.sans_serif = 'JetBrains Mono'
+c.fonts.web.family.serif = 'JetBrains Mono'
+c.fonts.web.family.standard = 'JetBrains Mono'
 
 # privacy - adjust these settings based on your preference
 # config.set("completion.cmd_history_max_items", 0)
