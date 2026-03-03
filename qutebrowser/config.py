@@ -48,7 +48,7 @@ config.bind('gJ', 'tab-move +')
 config.bind('gK', 'tab-move -')
 config.bind('gm', 'tab-move')
 config.bind('F', 'fake-key f')
-config.bind('gn', 'spawn --userscript /home/matan/dev/dotfiles/scripts/ep_increment.py {url}')
+config.bind('gn', 'spawn --userscript ep_increment.py {url}')
 
 # dark mode setup
 c.colors.webpage.darkmode.enabled = True
