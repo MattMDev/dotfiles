@@ -48,6 +48,7 @@ config.bind('gJ', 'tab-move +')
 config.bind('gK', 'tab-move -')
 config.bind('gm', 'tab-move')
 config.bind('F', 'fake-key f')
+config.bind('n', 'spawn --userscript ep_increment {url}')
 
 # dark mode setup
 c.colors.webpage.darkmode.enabled = True
