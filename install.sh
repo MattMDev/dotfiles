@@ -9,7 +9,7 @@ CONF_PATH="${HOME}/.config"
 cp ./hypr/* "${CONF_PATH}/hypr"
 
 # reload hyprland if running
-if pgrep -x hyprland > /dev/null; then
+if pgrep hyprland > /dev/null; then
     hyprctl reload
 fi
 
