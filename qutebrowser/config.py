@@ -3,11 +3,11 @@ c = c  # noqa: F821 pylint: disable=E0602,C0103
 config = config  # noqa: F821 pylint: disable=E0602,C0103
 # pylint settings included to disable linting errors
 
-c.colors.statusbar.normal.bg = "#00000000"
-c.colors.statusbar.command.bg = "#00000000"
-# c.colors.tabs.even.bg = "#00000000" # transparent tabs!!
-c.colors.tabs.odd.bg = "#00000000"
-c.colors.tabs.bar.bg = "#00000000"
+c.colors.statusbar.normal.bg = "#333333"
+c.colors.statusbar.command.bg = "#333333"
+c.colors.tabs.even.bg = "#333333"
+c.colors.tabs.odd.bg = "#333333"
+c.colors.tabs.bar.bg = "#333333"
 c.tabs.show = "multiple"
 # c.url.start_pages = ""
 # c.url.default_page = ""
@@ -48,7 +48,7 @@ config.bind('gJ', 'tab-move +')
 config.bind('gK', 'tab-move -')
 config.bind('gm', 'tab-move')
 config.bind('F', 'fake-key f')
-config.bind('n', 'spawn --userscript ep_increment {url}')
+config.bind('gn', 'spawn --userscript /home/matan/dev/dotfiles/scripts/ep_increment.py {url}')
 
 # dark mode setup
 c.colors.webpage.darkmode.enabled = True
