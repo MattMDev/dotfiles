@@ -50,6 +50,18 @@ config.bind('gm', 'tab-move')
 config.bind('F', 'fake-key f')
 config.bind('gn', 'spawn --userscript ep_increment.py {url}')
 
+# CTRL+number to send explicit keys
+config.bind('<ctrl-0>', 'fake-key 0')
+config.bind('<ctrl-1>', 'fake-key 1')
+config.bind('<ctrl-2>', 'fake-key 2')
+config.bind('<ctrl-3>', 'fake-key 3')
+config.bind('<ctrl-4>', 'fake-key 4')
+config.bind('<ctrl-5>', 'fake-key 5')
+config.bind('<ctrl-6>', 'fake-key 6')
+config.bind('<ctrl-7>', 'fake-key 7')
+config.bind('<ctrl-8>', 'fake-key 8')
+config.bind('<ctrl-9>', 'fake-key 9')
+
 # dark mode setup
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
