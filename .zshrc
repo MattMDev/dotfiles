@@ -31,6 +31,9 @@ alias clean='git reset --hard; git pull --rebase'
 # AI
 alias oc='opencode'
 
+#copy & paste
+alias pbcopy='wl-copy'
+
 # neovim
 alias nwd='nvim .'
 
