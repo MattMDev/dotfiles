@@ -19,16 +19,12 @@ dispatch_workspaces() {
 }
 
 disable_all_monitors() {
-    local exclude=$1
-
     mapfile -t monitors < <(hyprctl -j monitors all | jq -r '.[].name')
 
     for monitor in "${monitors[@]}"; do
-        if [[ "$monitor" != "$exclude" ]]; then
-            hyprctl keyword monitor "$monitor, disable"
-        fi
+        hyprctl keyword monitor "$monitor, disable"
+        sleep 0.3
     done
-    sleep 0.3
 }
 
 # Detect current mode: check if TV is enabled
@@ -36,13 +32,13 @@ TV_ACTIVE=$(hyprctl -j monitors | jq -r '.[] | select(.name == "'"$tv"'") | .nam
 
 if [ "$TV_ACTIVE" = "$tv" ]; then
     # Currently in TV mode → switch to PC mode
-    disable_all_monitors "$tv"
+    disable_all_monitors
     hyprctl keyword monitor "$main_screen, 2560x1440@164.96Hz, 0x0, 1"
     hyprctl keyword monitor "$secondary_screen, 1920x1080@60, auto-center-right, 1"
     PRIMARY="$main_screen"
 else
     # Currently in PC mode → switch to TV mode
-    disable_all_monitors "$main_screen"
+    disable_all_monitors
     hyprctl keyword monitor "$tv, 2560x1440@60, 0x0, 2"
     PRIMARY="$tv"
 fi
