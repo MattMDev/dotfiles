@@ -23,7 +23,7 @@ disable_all_monitors() {
 
     for monitor in "${monitors[@]}"; do
         hyprctl keyword monitor "$monitor, disable"
-        sleep 0.3
+        sleep 0.5
     done
 }
 
@@ -39,6 +39,7 @@ if [ "$TV_ACTIVE" = "$tv" ]; then
 else
     # Currently in PC mode → switch to TV mode
     disable_all_monitors
+    sleep 0.5
     hyprctl keyword monitor "$tv, 2560x1440@60, 0x0, 2"
     PRIMARY="$tv"
 fi
