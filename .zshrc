@@ -24,6 +24,7 @@ export EDITOR='nvim'
 # Aliases
 alias gs='git status'
 alias ga='git add'
+alias gr='git restore -S'
 alias gcm='git commit -m'
 alias gp='git push'
 alias clean='git reset --hard; git pull --rebase'
