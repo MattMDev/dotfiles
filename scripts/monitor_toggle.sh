@@ -27,9 +27,3 @@ fi
 for i in $(seq 1 9); do
     hyprctl dispatch movetoworkspace "$i:$PRIMARY"
 done
-
-# Restart quickshell bar
-pkill -f "quickshell/bar.qml" || true
-sleep 0.5
-hyprctl dispatch workspace 1
-qs -p ~/dev/dotfiles/quickshell/bar.qml &
