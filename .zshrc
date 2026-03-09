@@ -36,6 +36,7 @@ alias pbcopy='wl-copy'
 
 # neovim
 alias nwd='nvim .'
+alias d='pushd ${HOME}/dev/dotfiles && nvim .'
 
 alias ls='eza -l'
 alias ll='eza -l'
