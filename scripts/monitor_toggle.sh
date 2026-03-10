@@ -31,12 +31,14 @@ dispatch_workspaces() {
 }
 
 disable_all_monitors() {
-    mapfile -t monitors < <(hyprctl -j monitors all | jq -r '.[].name')
-    log "Disabling monitors: ${monitors[*]}"
+    local monitor=$1
 
-    for monitor in "${monitors[@]}"; do
-        hyprctl keyword monitor "$monitor, disable"
-        log "Disabled monitor: $monitor"
+    mapfile -t monitors < <(hyprctl -j monitors all | jq -r '.[] | select(.name != "'"$monitor"'") | .name')
+    log "Disabling monitors: ${monitors[*]} (except: $monitor)"
+
+    for mon in "${monitors[@]}"; do
+        hyprctl keyword monitor "$mon, disable"
+        log "Disabled monitor: $mon"
         sleep 0.5
     done
 }
@@ -48,7 +50,7 @@ log "TV_ACTIVE: $TV_ACTIVE"
 if [ "$TV_ACTIVE" = "$tv" ]; then
     # Currently in TV mode → switch to PC mode
     log "Switching to PC mode"
-    disable_all_monitors
+    disable_all_monitors "$main_screen"
     hyprctl keyword monitor "$main_screen, 2560x1440@164.96Hz, 0x0, 1"
     hyprctl keyword monitor "$secondary_screen, 1920x1080@60, auto-center-right, 1"
     log "Enabled $main_screen and $secondary_screen"
@@ -56,11 +58,10 @@ if [ "$TV_ACTIVE" = "$tv" ]; then
 else
     # Currently in PC mode → switch to TV mode
     log "Switching to TV mode"
-    disable_all_monitors
-    sleep 0.5
     hyprctl keyword monitor "$tv, 2560x1440@60, auto-center-left, 2"
-    log "Enabled $tv"
+    disable_all_monitors "$tv"
     sleep 0.5
+    log "Enabled $tv"
     if ! hyprctl -j monitors | jq -e '.[] | select(.name == "'"$tv"'")' >/dev/null 2>&1; then
         log "WARNING: TV ($tv) not found in active monitors after dispatch"
     fi
