@@ -58,12 +58,17 @@ else
     log "Switching to TV mode"
     disable_all_monitors
     sleep 0.5
-    hyprctl keyword monitor "$tv, 2560x1440@60, 0x0, 2"
+    hyprctl keyword monitor "$tv, 2560x1440@60, auto-center-left, 2"
     log "Enabled $tv"
+    sleep 0.5
+    if ! hyprctl -j monitors | jq -e '.[] | select(.name == "'"$tv"'")' >/dev/null 2>&1; then
+        log "WARNING: TV ($tv) not found in active monitors after dispatch"
+    fi
     PRIMARY="$tv"
 fi
-
 dispatch_workspaces $PRIMARY
 
 log "Script completed - PRIMARY: $PRIMARY"
 log "Log file: $LOG_FILE"
+
+# hyprctl keyword monitor "DP-1, disable"; hyprctl keyword monitor "HDMI-A-3, 2560x1440@60, auto-center-left, 2"
