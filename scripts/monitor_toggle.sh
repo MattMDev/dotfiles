@@ -39,7 +39,6 @@ disable_all_monitors() {
     for mon in "${monitors[@]}"; do
         hyprctl keyword monitor "$mon, disable"
         log "Disabled monitor: $mon"
-        sleep 0.5
     done
 }
 
@@ -60,7 +59,6 @@ else
     log "Switching to TV mode"
     hyprctl keyword monitor "$tv, 2560x1440@60, auto-center-left, 2"
     disable_all_monitors "$tv"
-    sleep 0.5
     log "Enabled $tv"
     if ! hyprctl -j monitors | jq -e '.[] | select(.name == "'"$tv"'")' >/dev/null 2>&1; then
         log "WARNING: TV ($tv) not found in active monitors after dispatch"
