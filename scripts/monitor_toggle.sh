@@ -70,4 +70,6 @@ dispatch_workspaces $PRIMARY
 log "Script completed - PRIMARY: $PRIMARY"
 log "Log file: $LOG_FILE"
 
-# hyprctl keyword monitor "DP-1, disable"; hyprctl keyword monitor "HDMI-A-3, 2560x1440@60, auto-center-left, 2"
+killall qs
+sleep 0.3
+qs -c noctalia-shell & disown 
