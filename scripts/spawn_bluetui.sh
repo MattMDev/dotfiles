@@ -10,4 +10,5 @@ if [ -n "$WINDOW" ]; then
     hyprctl dispatch focuswindow "address:$WINDOW"
     hyprctl dispatch setfloating
     hyprctl dispatch centerwindow
+    hyprctl dispatch resizeactive exact 800 600
 fi
