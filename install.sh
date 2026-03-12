@@ -67,4 +67,5 @@ yay \
 zoxide \
 zsh \
 qutebrowser \
+gamescope \
 python-adblock
