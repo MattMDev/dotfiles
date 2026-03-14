@@ -104,14 +104,14 @@
 
 ## use ctrl instead of alt as the shortcut modifier key for numerical UI shortcuts
 ## alt-0 .. alt-9
-# ctrl_n_shortcuts = false
+ctrl_n_shortcuts = true
 
 ## Show numeric shortcuts (1..9) beside list items in the TUI
 ## set to false to hide the moving numbers if you find them distracting
 # show_numeric_shortcuts = true
 
 ## default history list format - can also be specified with the --format arg
-# history_format = "{time}\t{command}\t{duration}"
+history_format = "{time}\t{command}"
 
 ## prevent commands matching any of these regexes from being written to history.
 ## Note that these regular expressions are unanchored, i.e. if they don't start
@@ -351,7 +351,7 @@ records = true
 ## Examples:
 ##
 ## Minimal - more space for commands:
-# columns = ["duration", "command"]
+columns = ["command"]
 ##
 ## With wider directory column:
 # columns = ["duration", { type = "directory", width = 30 }, "command"]
