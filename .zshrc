@@ -54,7 +54,7 @@ source <(fzf --zsh)
 # Startship
 eval "$(starship init zsh)"
 
-atuin
+# atuin
 eval "$(atuin init zsh)"
 
 # NVM
