@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH=$HOME/go/bin":$HOME/.cargo/bin":$PATH
+export PATH=$HOME/.atuin/bin:$PATH
 
 # opencode
 export PATH=/home/matan/.opencode/bin:$PATH
@@ -59,3 +60,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
