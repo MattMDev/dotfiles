@@ -1,3 +1,5 @@
+local opts = { noremap = true, silent = true }
+
 -- Move selected line / block of text in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
@@ -16,10 +18,8 @@ vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]], { desc = "Delete without copy
 vim.keymap.set("v", "p", '"_dp')
 vim.keymap.set("v", "P", '"_dP')
 
--- Move to start/end of line
--- vim.keymap.set({ "n", "x", "o" }, "H", "^", opts)
--- vim.keymap.set({ "n", "x", "o" }, "L", "g_", opts)
-
+-- prevent x delete from registering when next paste
+vim.keymap.set("n", "x", '"_x', opts)
 
 -- Panes resizing
 vim.keymap.set("n", "+", ":vertical resize +5<CR>")
@@ -52,6 +52,23 @@ vim.keymap.set("n", "<leader>td", "<cmd>tabnew %<cr>", opts)
 vim.keymap.set("n", "<leader>tc", "<cmd>tabclose<cr>", opts)
 vim.keymap.set("n", "<D-l>", "<cmd>tabnext<cr>", opts)
 vim.keymap.set("n", "<D-h>", "<cmd>tabprev<cr>", opts)
+
+-- ctrl c as escape cuz Im lazy to reach up to the esc key
+vim.keymap.set("n", "<C-c>", ":nohl<CR>", { desc = "Clear search hl", silent = true })
+
+-- format using lsp formatter
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+
+-- Unmaps Q in normal mode
+vim.keymap.set("n", "Q", "<nop>")
+
+
+-- Replace the word cursor is on globally
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { desc = "Replace word cursor is on globally" })
+
+-- Executes shell command from in here making file executable
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "makes file executable" })
 
 -- File paths
 vim.keymap.set("n", "<leader>fp", function()
