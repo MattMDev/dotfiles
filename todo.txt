@@ -1,7 +1,8 @@
 basic
-1. seperate hyperconfig into modules
+1. improve app launcher
+2. use native steam launch settings instead of gamescope
+3. launch steam big window mode on startup (workspace 8)
 Advanced
 1. Improve bar (quickshell) configuration
     a. Add spotify integration (show currently played song)
 2. Improve notification (dunst) configuration + spotify support
-3. opening spotify on second monitor on boot doesn't work
