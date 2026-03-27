@@ -102,6 +102,7 @@ config.set("content.cookies.store", True)
 c.content.blocking.enabled = True
 c.content.blocking.method = 'adblock' # uncomment this if you install python-adblock
 c.content.blocking.adblock.lists = [
+        "file://$CONFIGDIR/custom-blocklist.txt",
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/legacy.txt",
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters.txt",
         "https://github.com/uBlockOrigin/uAssets/raw/master/filters/filters-2020.txt",

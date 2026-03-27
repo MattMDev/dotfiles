@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         9animetv.to Adblocker
 // @namespace    https://9animetv.to
-// @version      1.1
+// @version      1.3
 // @description  Block ads and popups on 9animetv.to
 // @match        *://9animetv.to/*
 // @match        *://*.9animetv.to/*
@@ -20,6 +20,59 @@
 
 (function() {
     'use strict';
+
+    window.goqonBlocked = true;
+
+    const originalCreateElement = document.createElement.bind(document);
+    document.createElement = function(tagName, options) {
+        const el = originalCreateElement(tagName, options);
+        if (tagName.toLowerCase() === 'script') {
+            const originalSrc = Object.getOwnPropertyDescriptor(HTMLScriptElement.prototype, 'src');
+            Object.defineProperty(el, 'src', {
+                set: function(value) {
+                    if (value && value.includes('goqon.com')) {
+                        console.log('[9animetv Adblock] Blocked script from goqon.com');
+                        return;
+                    }
+                    originalSrc.set.call(this, value);
+                },
+                get: originalSrc ? originalSrc.get.bind(el) : function() { return ''; }
+            });
+        }
+        return el;
+    };
+
+    const originalAppendChild = Node.prototype.appendChild;
+    Node.prototype.appendChild = function(node) {
+        if (node && node.src && typeof node.src === 'string' && node.src.includes('goqon.com')) {
+            console.log('[9animetv Adblock] Blocked appendChild of goqon.com script');
+            return node;
+        }
+        return originalAppendChild.call(this, node);
+    };
+
+    const originalInsertBefore = Node.prototype.insertBefore;
+    Node.prototype.insertBefore = function(newNode, refNode) {
+        if (newNode && newNode.src && typeof newNode.src === 'string' && newNode.src.includes('goqon.com')) {
+            console.log('[9animetv Adblock] Blocked insertBefore of goqon.com script');
+            return newNode;
+        }
+        return originalInsertBefore.call(this, newNode, refNode);
+    };
+
+    if (typeof GM_addStyle !== 'undefined') {
+        GM_addStyle(`
+            [src*="goqon.com"], [href*="goqon.com"], iframe[src*="goqon.com"],
+            div[style*="goqon.com"], div[data-src*="goqon.com"] {
+                display: none !important;
+            }
+            body > div:last-child[style*="fixed"],
+            body > div:last-child[class*="popup"],
+            body > div:last-child[class*="modal"] {
+                display: none !important;
+            }
+        `);
+    }
 
     const adSelectors = [
         '.ads',
@@ -73,10 +126,29 @@
         '[role="dialog"]',
         '[aria-modal="true"]',
         '.告知',
-        '[class*="告知"]'
+        '[class*="告知"]',
+        '[class*="subscribe"]',
+        '[class*="notification"]',
+        '[id*="notification"]',
+        '[class*="promo"]',
+        '.disclaimer',
+        '[class*="disclaimer"]',
+        '[class*="age-verify"]',
+        '[class*="age-verif"]',
+        '.close-btn',
+        '[class*="close-btn"]',
+        '[class*="closebtn"]',
+        '.close-button',
+        '[class*="close-button"]',
+        '[class*="ad-modal"]',
+        '[class*="adModal"]',
+        '.video-ad',
+        '[class*="video-ad"]',
+        '[class*="interstitial"]'
     ];
 
     const adDomains = [
+        'goqon.com',
         'doubleclick.net',
         'googlesyndication.com',
         'googleadservices.com',
@@ -216,6 +288,28 @@
             });
         } catch (e) {
         }
+
+        try {
+            const body = document.body;
+            if (body) {
+                const children = body.children;
+                for (const child of children) {
+                    const style = window.getComputedStyle(child);
+                    const rect = child.getBoundingClientRect();
+                    if (rect.width >= window.innerWidth * 0.8 && rect.height >= window.innerHeight * 0.5) {
+                        if (style.position === 'fixed' || style.position === 'absolute') {
+                            const hasVideo = child.querySelector('video, iframe[src*="video"], canvas');
+                            const hasInput = child.querySelector('input, textarea, select');
+                            if (!hasVideo && !hasInput) {
+                                child.style.display = 'none';
+                                child.style.visibility = 'hidden';
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (e) {
+        }
     }
 
     function addClickToCloseHandler() {
@@ -297,19 +391,27 @@
             'application/javascript'
         ];
 
+        const adDomainsRegex = new RegExp(adDomains.map(d => d.replace('.', '\\.')).join('|'), 'i');
+
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 mutation.addedNodes.forEach((node) => {
                     if (node.nodeType === Node.ELEMENT_NODE) {
                         if (scriptTypes.includes(node.type) || 
-                            (node.tagName === 'SCRIPT' && node.src && 
-                             adDomains.some(d => node.src.includes(d)))) {
+                            (node.tagName === 'SCRIPT' && node.src && adDomainsRegex.test(node.src))) {
                             node.remove();
                         }
                         if (node.tagName === 'IFRAME') {
                             const src = node.src || '';
-                            if (adDomains.some(d => src.includes(d))) {
+                            if (adDomainsRegex.test(src)) {
                                 node.remove();
+                            }
+                        }
+                        if (node.tagName === 'IMG' || node.tagName === 'DIV' || node.tagName === 'SPAN') {
+                            const src = node.src || node.getAttribute('data-src') || '';
+                            const bg = window.getComputedStyle(node).backgroundImage;
+                            if (adDomainsRegex.test(src) || (bg && bg !== 'none' && adDomainsRegex.test(bg))) {
+                                node.style.display = 'none';
                             }
                         }
                     }
@@ -390,11 +492,11 @@
             hideAntiAdblockMessage();
             hidePopupOverlays();
             hideFullscreenOverlays();
-        }, 300);
+        }, 100);
 
         setTimeout(() => {
             clearInterval(removeInterval);
-        }, 60000);
+        }, 120000);
 
         if (typeof window.onurlchange !== 'undefined') {
             window.addEventListener('urlchange', (info) => {
@@ -410,6 +512,12 @@
             hideAntiAdblockMessage();
             hidePopupOverlays();
         });
+
+        new MutationObserver(() => {
+            removeAdElements();
+            hidePopupOverlays();
+            hideFullscreenOverlays();
+        }).observe(document.body, { childList: true, subtree: true });
     }
 
     if (document.readyState === 'loading') {

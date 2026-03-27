@@ -1,0 +1,4 @@
+||goqon.com^$third-party
+||goqon.com/*
+||*.goqon.com^
+https://goqon.com/*
