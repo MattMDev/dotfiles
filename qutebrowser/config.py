@@ -69,7 +69,10 @@ c.colors.webpage.darkmode.policy.images = 'never'
 
 
 # Dark mode exception for 9anime
-with config.pattern('*://9animetv.to/*') as p:
+with config.pattern('youtube.com') as p:
+    p.colors.webpage.darkmode.enabled = False 
+
+with config.pattern('9animetv.to') as p:
    p.colors.webpage.darkmode.enabled = False 
 
 # styles, cosmetics
