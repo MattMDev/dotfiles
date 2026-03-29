@@ -32,7 +32,7 @@ c.auto_save.session = True # save tabs on quit/restart
 
 # keybinding changes
 # config.bind('=', 'cmd-set-text -s :open')
-config.bind('h', 'history')
+config.bind('h', 'scroll left')
 config.bind('cc', 'hint images spawn sh -c "cliphist link {hint-url}"')
 config.bind('cs', 'cmd-set-text -s :config-source')
 # config.bind('tH', 'config-cycle tabs.show multiple never')
@@ -66,6 +66,12 @@ config.bind('<ctrl-9>', 'fake-key 9')
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.darkmode.algorithm = 'lightness-cielab'
 c.colors.webpage.darkmode.policy.images = 'never'
+
+
+# Dark mode exception for 9anime
+with config.pattern('*://9animetv.to/*') as p:
+   p.colors.webpage.darkmode.enabled = False 
+
 # styles, cosmetics
 # c.content.user_stylesheets = ["~/.config/qutebrowser/styles/youtube-tweaks.css"]
 c.tabs.padding = {'top': 5, 'bottom': 5, 'left': 9, 'right': 9}
