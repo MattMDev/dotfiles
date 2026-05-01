@@ -9,7 +9,7 @@ CONF_PATH="${HOME}/.config"
 cp ./hypr/* "${CONF_PATH}/hypr"
 
 # reload hyprland if running
-if pgrep hyprland > /dev/null; then
+if pgrep hyprland >/dev/null; then
     hyprctl reload
 fi
 
@@ -26,9 +26,8 @@ LOCAL_DIR=$(pwd)
 # ln -sf "${LOCAL_DIR}/starship.toml" "${CONF_PATH}/starship.toml"
 # ln -sf "${LOCAL_DIR}/qutebrowser/greasemonkey" "${HOME}/.local/share/qutebrowser/greasemonkey"
 
-rm -rf "${HOME}/.local/share/qutebrowser/userscripts"
-cp -r "${LOCAL_DIR}/qutebrowser/userscripts" "${HOME}/.local/share/qutebrowser/userscripts"
-
+# rm -rf "${HOME}/.local/share/qutebrowser/userscripts"
+# cp -r "${LOCAL_DIR}/qutebrowser/userscripts" "${HOME}/.local/share/qutebrowser/userscripts"
 
 exit
 
@@ -37,36 +36,36 @@ sudo timedatectl set-ntp true
 
 # installed libraries
 sudo pacman -Syu \
-base-devel \
-bluetui \
-bluez-utils \
-cliphist \
-eza \
-fd \
-firefox \
-fzf \
-git \
-hyprland \
-jq \
-kitty \
-luarocks \
-neovim \
-nvidia-open \
-nvidia-utils \
-sof-firmware \
-spotify-launcher \
-steam \
-ttf-fira-code \
-ttf-jetbrains-mono-nerd \
-vim \
-waybar \
-wiremix \
-wl-clipboard \
-wofi \
-xf86-video-vesa \
-yay \
-zoxide \
-zsh \
-qutebrowser \
-gamescope \
-python-adblock
+    base-devel \
+    bluetui \
+    bluez-utils \
+    cliphist \
+    eza \
+    fd \
+    firefox \
+    fzf \
+    git \
+    hyprland \
+    jq \
+    kitty \
+    luarocks \
+    neovim \
+    nvidia-open \
+    nvidia-utils \
+    sof-firmware \
+    spotify-launcher \
+    steam \
+    ttf-fira-code \
+    ttf-jetbrains-mono-nerd \
+    vim \
+    waybar \
+    wiremix \
+    wl-clipboard \
+    wofi \
+    xf86-video-vesa \
+    yay \
+    zoxide \
+    zsh \
+    qutebrowser \
+    gamescope \
+    python-adblock
