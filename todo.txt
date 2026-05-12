@@ -1,9 +1,10 @@
 basic
 1. fix autostart programs
-2. improve app launcher
-3. use native steam launch settings instead of gamescope
-4. launch steam big window mode on startup (workspace 8)
-5. configure qutebroser's media bar to be light mode
+2. fix bindings (bluetui panel - disabled animation + center + floating)
+3. improve app launcher
+4. use native steam launch settings instead of gamescope
+5. launch steam big window mode on startup (workspace 8)
+6. configure qutebroser's media bar to be light mode
 Advanced
 1. Improve bar (quickshell) configuration
     a. Add spotify integration (show currently played song)
