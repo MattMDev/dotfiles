@@ -1,0 +1,118 @@
+local terminal = "kitty"
+local browser = "firefox"
+local browser2 = "qutebrowser"
+local fileManager = "dolphin"
+local scripts = "/home/matan/dev/dotfiles/scripts"
+local menu = "wofi --show drun --columns 1"
+local copy = "cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
+local music = "spotify-launcher"
+
+local mainMod = "ALT" -- Sets "Windows" key as main modifier
+
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(scripts .. "/spawn_bluetui.sh"))
+hl.bind(mainMod .. " + Q", hl.dsp.window.close())
+hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(copy))
+hl.bind(mainMod .. "+ SHIFT + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+-- hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
+-- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
+
+hl.bind("SUPER + TAB", hl.focus.workspace("e+1"))
+
+-- Move focus with mainMod + arrow keys
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.focus({ direction = "right" }))
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.focus({ direction = "down" }))
+
+-- Switch workspaces with mainMod + [0-9]
+-- Move active window to a workspace with mainMod + SHIFT + [0-9]
+for i = 1, 10 do
+	local key = i % 10 -- 10 maps to key 0
+	hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
+	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
+end
+
+-- Modes
+-- Resize Mode
+-- Switch to a submap called `resize`.
+hl.bind("CTRL + ALT + R", hl.dsp.submap("resize"))
+
+-- Start a submap called "resize".
+hl.define_submap("resize", function()
+	-- Set repeating binds for resizing the active window.
+	hl.bind("H", hl.resize({ x = 10, y = 0, relative = true }), { repeating = true })
+	hl.bind("L", hl.resize({ x = -10, y = 0, relative = true }), { repeating = true })
+	hl.bind("K", hl.resize({ x = 0, y = 10, relative = true }), { repeating = true })
+	hl.bind("J", hl.resize({ x = 10, y = -10, relative = true }), { repeating = true })
+	hl.bind("CTRL + H", hl.resize({ x = 30, y = 0, relative = true }), { repeating = true })
+	hl.bind("CTRL + L", hl.resize({ x = -30, y = 0, relative = true }), { repeating = true })
+	hl.bind("CTRL + K", hl.resize({ x = 0, y = 30, relative = true }), { repeating = true })
+	hl.bind("CTRL + J", hl.resize({ x = 30, y = -30, relative = true }), { repeating = true })
+
+	-- Use `reset` to go back to the global submap
+	hl.bind("escape", hl.dsp.submap("reset"))
+end)
+
+-- Window switcher mode
+hl.bind("CTRL + ALT + W", hl.dsp.submap("window_switcher"))
+
+-- Start a submap called "resize".
+hl.define_submap("window_switcher", function()
+	-- Set repeating binds for resizing the active window.
+	hl.bind(mainMod .. "H", hl.dsp.focus({ direction = "left" }))
+	hl.bind(mainMod .. "L", hl.dsp.focus({ direction = "right" }))
+	hl.bind(mainMod .. "K", hl.dsp.focus({ direction = "up" }))
+	hl.bind(mainMod .. "J", hl.dsp.focus({ direction = "down" }))
+	hl.bind(mainMod .. "CTRL + H", hl.dsp.focus({ direction = "left" }))
+	hl.bind(mainMod .. "CTRL + L", hl.dsp.focus({ direction = "right" }))
+	hl.bind(mainMod .. "CTRL + K", hl.dsp.focus({ direction = "up" }))
+	hl.bind(mainMod .. "CTRL + J", hl.dsp.focus({ direction = "down" }))
+
+	-- Use `reset` to go back to the global submap
+	hl.bind("escape", hl.dsp.submap("reset"))
+end)
+
+-- Custom scripts
+hl.bind("CTRL + F1", hl.dsp.cursor.move_to_corner({ 0 }))
+hl.bind("CTRL + F2", hl.dsp.exec_cmd(scripts .. "/monitor_toggle.sh"))
+
+-- Scroll through existing workspaces with mainMod + scroll
+hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
+hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
+
+-- Move/resize windows with mainMod + LMB/RMB and dragging
+hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
+hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
+
+-- Laptop multimedia keys for volume and LCD brightness
+hl.bind(
+	"XF86AudioRaiseVolume",
+	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"XF86AudioLowerVolume",
+	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"XF86AudioMute",
+	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+	{ locked = true, repeating = true }
+)
+hl.bind(
+	"XF86AudioMicMute",
+	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
+	{ locked = true, repeating = true }
+)
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
+
+-- Requires playerctl
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })

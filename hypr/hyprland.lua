@@ -1,0 +1,7 @@
+require("modules/autostart")
+require("modules/binds")
+require("modules/envs")
+require("modules/input")
+require("modules/monitors")
+require("modules/rules")
+require("modules/ui")
