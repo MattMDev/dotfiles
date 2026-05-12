@@ -6,7 +6,7 @@
 CONF_PATH="${HOME}/.config"
 
 # copy hyperland config
-cp ./hypr/* "${CONF_PATH}/hypr"
+cp -r ./hypr/* "${CONF_PATH}/hypr"
 
 # reload hyprland if running
 if pgrep hyprland >/dev/null; then

@@ -19,7 +19,7 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 -- hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 -- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
-hl.bind("SUPER + TAB", hl.focus.workspace("e+1"))
+-- hl.bind("SUPER + TAB", hl.focus.workspace("e+1"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.focus({ direction = "left" }))
@@ -43,14 +43,14 @@ hl.bind("CTRL + ALT + R", hl.dsp.submap("resize"))
 -- Start a submap called "resize".
 hl.define_submap("resize", function()
 	-- Set repeating binds for resizing the active window.
-	hl.bind("H", hl.resize({ x = 10, y = 0, relative = true }), { repeating = true })
-	hl.bind("L", hl.resize({ x = -10, y = 0, relative = true }), { repeating = true })
-	hl.bind("K", hl.resize({ x = 0, y = 10, relative = true }), { repeating = true })
-	hl.bind("J", hl.resize({ x = 10, y = -10, relative = true }), { repeating = true })
-	hl.bind("CTRL + H", hl.resize({ x = 30, y = 0, relative = true }), { repeating = true })
-	hl.bind("CTRL + L", hl.resize({ x = -30, y = 0, relative = true }), { repeating = true })
-	hl.bind("CTRL + K", hl.resize({ x = 0, y = 30, relative = true }), { repeating = true })
-	hl.bind("CTRL + J", hl.resize({ x = 30, y = -30, relative = true }), { repeating = true })
+	hl.bind("H", hl.dsp.window.resize({ x = 10, y = 0, relative = true }), { repeating = true })
+	hl.bind("L", hl.dsp.window.resize({ x = -10, y = 0, relative = true }), { repeating = true })
+	hl.bind("K", hl.dsp.window.resize({ x = 0, y = 10, relative = true }), { repeating = true })
+	hl.bind("J", hl.dsp.window.resize({ x = 10, y = -10, relative = true }), { repeating = true })
+	hl.bind("CTRL + H", hl.dsp.window.resize({ x = 30, y = 0, relative = true }), { repeating = true })
+	hl.bind("CTRL + L", hl.dsp.window.resize({ x = -30, y = 0, relative = true }), { repeating = true })
+	hl.bind("CTRL + K", hl.dsp.window.resize({ x = 0, y = 30, relative = true }), { repeating = true })
+	hl.bind("CTRL + J", hl.dsp.window.resize({ x = 30, y = -30, relative = true }), { repeating = true })
 
 	-- Use `reset` to go back to the global submap
 	hl.bind("escape", hl.dsp.submap("reset"))
@@ -62,21 +62,21 @@ hl.bind("CTRL + ALT + W", hl.dsp.submap("window_switcher"))
 -- Start a submap called "resize".
 hl.define_submap("window_switcher", function()
 	-- Set repeating binds for resizing the active window.
-	hl.bind(mainMod .. "H", hl.dsp.focus({ direction = "left" }))
-	hl.bind(mainMod .. "L", hl.dsp.focus({ direction = "right" }))
-	hl.bind(mainMod .. "K", hl.dsp.focus({ direction = "up" }))
-	hl.bind(mainMod .. "J", hl.dsp.focus({ direction = "down" }))
-	hl.bind(mainMod .. "CTRL + H", hl.dsp.focus({ direction = "left" }))
-	hl.bind(mainMod .. "CTRL + L", hl.dsp.focus({ direction = "right" }))
-	hl.bind(mainMod .. "CTRL + K", hl.dsp.focus({ direction = "up" }))
-	hl.bind(mainMod .. "CTRL + J", hl.dsp.focus({ direction = "down" }))
+	hl.bind("H", hl.dsp.focus({ direction = "left" }))
+	hl.bind("L", hl.dsp.focus({ direction = "right" }))
+	hl.bind("K", hl.dsp.focus({ direction = "up" }))
+	hl.bind("J", hl.dsp.focus({ direction = "down" }))
+	hl.bind("CTRL + H", hl.dsp.focus({ direction = "left" }))
+	hl.bind("CTRL + L", hl.dsp.focus({ direction = "right" }))
+	hl.bind("CTRL + K", hl.dsp.focus({ direction = "up" }))
+	hl.bind("CTRL + J", hl.dsp.focus({ direction = "down" }))
 
 	-- Use `reset` to go back to the global submap
 	hl.bind("escape", hl.dsp.submap("reset"))
 end)
 
 -- Custom scripts
-hl.bind("CTRL + F1", hl.dsp.cursor.move_to_corner({ 0 }))
+hl.bind("CTRL + F1", hl.dsp.cursor.move_to_corner({ corner = 0 }))
 hl.bind("CTRL + F2", hl.dsp.exec_cmd(scripts .. "/monitor_toggle.sh"))
 
 -- Scroll through existing workspaces with mainMod + scroll
