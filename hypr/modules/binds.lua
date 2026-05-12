@@ -16,10 +16,12 @@ hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(copy))
 hl.bind(mainMod .. "+ SHIFT + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
--- hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
--- hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit")) -- dwindle only
 
--- hl.bind("SUPER + TAB", hl.focus.workspace("e+1"))
+-- To switch between windows in a floating workspace:
+hl.bind(mainMod .. "+ Tab", function()
+	hl.dispatch(hl.dsp.window.cycle_next()) -- Change focus to another window
+	hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
+end)
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.focus({ direction = "left" }))
