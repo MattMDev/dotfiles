@@ -77,6 +77,17 @@ hl.define_submap("window_switcher", function()
 	hl.bind("escape", hl.dsp.submap("reset"))
 end)
 
+-- Window switcher mode
+hl.bind("CTRL + ALT + P", hl.dsp.submap("power"))
+
+-- Start a submap called "resize".
+hl.define_submap("power", function()
+	-- Set repeating binds for resizing the active window.
+	hl.bind("P", hl.dsp.exec_cmd("shutdown"))
+
+	hl.bind("escape", hl.dsp.submap("reset"))
+end)
+
 -- Custom scripts
 hl.bind("CTRL + F1", hl.dsp.cursor.move_to_corner({ corner = 0 }))
 hl.bind("CTRL + F2", hl.dsp.exec_cmd(scripts .. "/monitor_toggle.sh"))
