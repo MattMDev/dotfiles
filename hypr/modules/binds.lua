@@ -15,6 +15,10 @@ hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(copy))
 hl.bind(mainMod .. "+ SHIFT + V", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(
+	mainMod .. "+ SHIFT + M",
+	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
+)
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 
 -- To switch between windows in a floating workspace:
@@ -74,17 +78,6 @@ hl.define_submap("window_switcher", function()
 	hl.bind("CTRL + J", hl.dsp.focus({ direction = "down" }))
 
 	-- Use `reset` to go back to the global submap
-	hl.bind("escape", hl.dsp.submap("reset"))
-end)
-
--- Window switcher mode
-hl.bind("CTRL + ALT + P", hl.dsp.submap("power"))
-
--- Start a submap called "resize".
-hl.define_submap("power", function()
-	-- Set repeating binds for resizing the active window.
-	hl.bind("P", hl.dsp.exec_cmd("shutdown"))
-
 	hl.bind("escape", hl.dsp.submap("reset"))
 end)
 
