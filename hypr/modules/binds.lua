@@ -17,7 +17,9 @@ hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(copy))
 hl.bind(mainMod .. "+ SHIFT + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(
 	mainMod .. "+ SHIFT + M",
-	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
+	hl.dsp.exec_cmd(
+		"command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()' || poweroff"
+	)
 )
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 
