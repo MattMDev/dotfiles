@@ -5,8 +5,8 @@
 -- local scripts = "/home/matan/dev/dotfiles/scripts"
 -- local menu = "wofi --show drun --columns 1"
 -- local copy = "cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
--- local music = "spotify-launcher"
 
+local music = "spotify-launcher"
 local wallpaper = "hyprpaper"
 local bar = "qs -c noctalia-shell"
 
@@ -20,6 +20,7 @@ local bar = "qs -c noctalia-shell"
 hl.on("hyprland.start", function()
 	hl.exec_cmd(bar)
 	hl.exec_cmd(wallpaper)
+	hl.exec_cmd(music)
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
 end)
