@@ -10,7 +10,10 @@ local music = "spotify-launcher"
 local mainMod = "ALT" -- Sets "Windows" key as main modifier
 
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(scripts .. "/spawn_bluetui.sh"))
+hl.bind(mainMod .. " + B", function()
+    hl.exec_cmd("killall bluetui 2>/dev/null")
+    hl.exec_cmd(terminal .. " --title bluetui bluetui")
+end)
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(copy))

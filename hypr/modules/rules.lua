@@ -31,11 +31,19 @@ hl.window_rule({
 })
 
 hl.window_rule({
+	name = "browser-workspace",
+	match = {
+		class = "firefox",
+	},
+	workspace = "3",
+})
+
+hl.window_rule({
 	name = "spotify-workspace",
 	match = {
-		class = "spotify",
+		class = "Spotify",
 	},
-	workspace = 9,
+	workspace = "9 silent",
 })
 
 hl.window_rule({
@@ -43,7 +51,7 @@ hl.window_rule({
 	match = {
 		class = "steam",
 	},
-	workspace = 5,
+	workspace = "5 silent",
 })
 
 hl.window_rule({
@@ -53,4 +61,7 @@ hl.window_rule({
 		title = "bluetui",
 	},
 	no_anim = true,
+	float = true,
+	center = 1,
+	size = "(monitor_w*0.6) (monitor_h*0.6)",
 })
