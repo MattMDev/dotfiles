@@ -5,19 +5,20 @@ local fileManager = "dolphin"
 local scripts = "/home/matan/dev/dotfiles/scripts"
 local menu = "wofi --show drun --columns 1"
 local copy = "cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
-local music = "spotify-launcher"
 
 local mainMod = "ALT" -- Sets "Windows" key as main modifier
 
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + B", function()
-    hl.exec_cmd("killall bluetui 2>/dev/null")
-    hl.exec_cmd(terminal .. " --title bluetui bluetui")
+	hl.exec_cmd("killall bluetui 2>/dev/null")
+	hl.exec_cmd(terminal .. " --title bluetui bluetui")
 end)
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(copy))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. "+ SHIFT + V", hl.dsp.window.float({ action = "toggle" }))
+
 hl.bind(
 	mainMod .. "+ SHIFT + M",
 	hl.dsp.exec_cmd(
@@ -81,6 +82,14 @@ hl.define_submap("window_switcher", function()
 	hl.bind("CTRL + L", hl.dsp.focus({ direction = "right" }))
 	hl.bind("CTRL + K", hl.dsp.focus({ direction = "up" }))
 	hl.bind("CTRL + J", hl.dsp.focus({ direction = "down" }))
+
+	-- Use `reset` to go back to the global submap
+	hl.bind("escape", hl.dsp.submap("reset"))
+end)
+
+-- Start a submap called "power".
+hl.define_submap("power", function()
+	hl.bind("P", hl.dsp.exec_cmd("poweroff"))
 
 	-- Use `reset` to go back to the global submap
 	hl.bind("escape", hl.dsp.submap("reset"))
