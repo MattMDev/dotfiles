@@ -2,11 +2,6 @@
 
 CONF_PATH="${HOME}/.config"
 
-# Kanshi
-mkdir -p "${CONF_PATH}/kanshi"
-mkdir -p "${CONF_PATH}/systemd/user"
-cp ./kanshi/kanshi.service "${CONF_PATH}/systemd/user/kanshi.service"
-
 # apply symlinks
 LOCAL_DIR=$(pwd)
 # ln -sf "$(LOCAL_DIR)/kanshi/config" "${CONF_PATH}/kanshi/config"
@@ -20,6 +15,7 @@ LOCAL_DIR=$(pwd)
 # ln -sf "${LOCAL_DIR}/qutebrowser/" "${CONF_PATH}/qutebrowser"
 # ln -sf "${LOCAL_DIR}/opencode/opencode.json" "${CONF_PATH}/opencode/opencode.json"
 # ln -sf "${LOCAL_DIR}/starship.toml" "${CONF_PATH}/starship.toml"
+# ln -sf "${LOCAL_DIR}/spotify-launcher.conf" "${CONF_PATH}/spotify-launcher.conf"
 # ln -sf "${LOCAL_DIR}/qutebrowser/greasemonkey" "${HOME}/.local/share/qutebrowser/greasemonkey"
 
 # rm -rf "${HOME}/.local/share/qutebrowser/userscripts"
@@ -81,7 +77,6 @@ sudo pacman -Sy \
 
 # Enable services
 systemctl --user daemon-reload
-systemctl --user enable kanshi
 systemctl enable bluetooth
 systemctl enable NetworkManager
 systemctl enable sddm

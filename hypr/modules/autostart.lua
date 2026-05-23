@@ -1,26 +1,41 @@
--- local terminal = "kitty"
--- local browser = "firefox"
--- local browser2 = "qutebrowser"
--- local fileManager = "dolphin"
--- local scripts = "/home/matan/dev/dotfiles/scripts"
--- local menu = "wofi --show drun --columns 1"
--- local copy = "cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
-
 local music = "spotify-launcher"
+local browser = "firefox"
 local wallpaper = "hyprpaper"
 local bar = "qs -c noctalia-shell"
+local steam = "steam"
 
--- TODO: Open apps in dedicated workspaces
--- exec-once = [workspace 1 silent] $terminal
--- exec-once = [workspace 2 silent] $terminal
--- exec-once = [workspace 3 silent] $browser
--- exec-once = [workspace 4 silent] sleep 2 && qutebrowser
--- exec-once = [workspace 9 silent] sleep 5 && $music
+local DESKTOP_MAIN = "DP-1"
+local DESKTOP_SECONDARY = "DP-3"
+
+local function organize_workspaces()
+	local monitors = {}
+	for _, m in ipairs(hl.get_monitors()) do
+		monitors[m.name] = true
+	end
+	if not monitors[DESKTOP_MAIN] then
+		return
+	end
+
+	if monitors[DESKTOP_SECONDARY] then
+		hl.dispatch(hl.dsp.workspace.move({ workspace = 9, monitor = DESKTOP_SECONDARY }))
+	end
+
+	for _, ws in ipairs(hl.get_workspaces()) do
+		if ws.id ~= 9 then
+			hl.dispatch(hl.dsp.workspace.move({ workspace = ws.id, monitor = DESKTOP_MAIN }))
+		end
+	end
+end
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd(bar)
-	hl.exec_cmd(wallpaper)
-	hl.exec_cmd(music)
 	hl.exec_cmd("wl-paste --type text --watch cliphist store")
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
+
+	organize_workspaces()
+
+	hl.exec_cmd(browser)
+	hl.exec_cmd(music)
+	hl.exec_cmd(wallpaper)
+	hl.exec_cmd(bar)
+	hl.exec_cmd(steam)
 end)

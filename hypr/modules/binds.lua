@@ -1,12 +1,12 @@
 local terminal = "kitty"
-local browser = "firefox"
-local browser2 = "qutebrowser"
+-- local browser = "firefox"
+-- local browser2 = "qutebrowser"
 local fileManager = "dolphin"
-local scripts = "/home/matan/dev/dotfiles/scripts"
 local menu = "wofi --show drun --columns 1"
-local copy = "cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
+local clipboard = "cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
 
 local mainMod = "ALT" -- Sets "Windows" key as main modifier
+local secondaryMod = "SUPER" -- Sets "Windows" key as main modifier
 
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + B", function()
@@ -15,21 +15,25 @@ hl.bind(mainMod .. " + B", function()
 end)
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(copy))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd(browser))
+hl.bind(secondaryMod .. " + V", hl.dsp.exec_cmd(clipboard))
 hl.bind(mainMod .. "+ SHIFT + V", hl.dsp.window.float({ action = "toggle" }))
-
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(
 	mainMod .. "+ SHIFT + M",
 	hl.dsp.exec_cmd(
 		"command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()' || poweroff"
 	)
 )
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 
 -- To switch between windows in a floating workspace:
 hl.bind(mainMod .. "+ Tab", function()
 	hl.dispatch(hl.dsp.window.cycle_next()) -- Change focus to another window
+	hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
+end)
+
+-- To switch between windows in a floating workspace:
+hl.bind(mainMod .. "+ SHIFT + Tab", function()
+	hl.dispatch(hl.dsp.window.cycle_next(-1)) -- Change focus to another window
 	hl.dispatch(hl.dsp.window.bring_to_top()) -- Bring it to the top
 end)
 
@@ -78,14 +82,17 @@ hl.define_submap("window_switcher", function()
 	hl.bind("L", hl.dsp.focus({ direction = "right" }))
 	hl.bind("K", hl.dsp.focus({ direction = "up" }))
 	hl.bind("J", hl.dsp.focus({ direction = "down" }))
-	hl.bind("CTRL + H", hl.dsp.focus({ direction = "left" }))
-	hl.bind("CTRL + L", hl.dsp.focus({ direction = "right" }))
-	hl.bind("CTRL + K", hl.dsp.focus({ direction = "up" }))
-	hl.bind("CTRL + J", hl.dsp.focus({ direction = "down" }))
+	hl.bind("CTRL + H", hl.dsp.window.move({ direction = "left" }))
+	hl.bind("CTRL + L", hl.dsp.window.move({ direction = "right" }))
+	hl.bind("CTRL + K", hl.dsp.window.move({ direction = "up" }))
+	hl.bind("CTRL + J", hl.dsp.window.move({ direction = "down" }))
 
 	-- Use `reset` to go back to the global submap
 	hl.bind("escape", hl.dsp.submap("reset"))
 end)
+
+-- power mode
+hl.bind("CTRL + ALT + P", hl.dsp.submap("power"))
 
 -- Start a submap called "power".
 hl.define_submap("power", function()
@@ -97,7 +104,11 @@ end)
 
 -- Custom scripts
 hl.bind("CTRL + F1", hl.dsp.cursor.move_to_corner({ corner = 0 }))
-hl.bind("CTRL + F2", hl.dsp.exec_cmd(scripts .. "/monitor_toggle.sh"))
+hl.bind("CTRL + F2", function()
+	if toggle_monitor_profile then
+		toggle_monitor_profile()
+	end
+end)
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
