@@ -1,21 +1,17 @@
 #!/bin/bash
 
-# Install packages
-# Install yay
-
 CONF_PATH="${HOME}/.config"
 
-# copy hyperland config
-cp -r ./hypr/* "${CONF_PATH}/hypr"
-
-# reload hyprland if running
-if pgrep hyprland >/dev/null; then
-    hyprctl reload
-fi
+# Kanshi
+mkdir -p "${CONF_PATH}/kanshi"
+mkdir -p "${CONF_PATH}/systemd/user"
+cp ./kanshi/kanshi.service "${CONF_PATH}/systemd/user/kanshi.service"
 
 # apply symlinks
 LOCAL_DIR=$(pwd)
+# ln -sf "$(LOCAL_DIR)/kanshi/config" "${CONF_PATH}/kanshi/config"
 # ln -sf "${LOCAL_DIR}/.zshrc" ~/.zshrc
+# ln -sf "${LOCAL_DIR}/hypr/" "${CONF_PATH}/hypr"
 # ln -sf "${LOCAL_DIR}/kitty/" "${CONF_PATH}/kitty"
 # ln -sf "${LOCAL_DIR}/wofi/" "${CONF_PATH}/wofi"
 # ln -sf "${LOCAL_DIR}/wallpapers/" "${CONF_PATH}/wallpapers"
@@ -34,8 +30,23 @@ exit
 # fix time issues
 sudo timedatectl set-ntp true
 
-# installed libraries
-sudo pacman -Syu \
+# Install nvidia drivers
+sudo pacman -Sy \
+    linux-headers \
+    nvidia-open-dkms \
+    nvidia-settings nvidia-utils lib32-nvidia-utils lib32-opencl-nvidia \
+    opencl-nvidia libvdpau libxnvctrl nvidia-open
+
+# Mango Hud
+sudo pacman -Sy mangohud lib32-mangohud
+
+# Audio
+sudo pacman -Sy \
+    pipewire lib32-pipewire pipewire-pulse pipewire-alsa pipewire-jack \
+    pipewire-audio pipewire-v4l2 wireplumber
+
+# Install general dependencies and programs
+sudo pacman -Sy \
     base-devel \
     bluetui \
     bluez-utils \
@@ -50,8 +61,6 @@ sudo pacman -Syu \
     kitty \
     luarocks \
     neovim \
-    nvidia-open \
-    nvidia-utils \
     sof-firmware \
     spotify-launcher \
     steam \
@@ -69,3 +78,10 @@ sudo pacman -Syu \
     qutebrowser \
     gamescope \
     python-adblock
+
+# Enable services
+systemctl --user daemon-reload
+systemctl --user enable kanshi
+systemctl enable bluetooth
+systemctl enable NetworkManager
+systemctl enable sddm
