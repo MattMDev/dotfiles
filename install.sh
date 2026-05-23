@@ -77,6 +77,8 @@ sudo pacman -Sy \
 
 # Enable services
 systemctl --user daemon-reload
+systemctl --user enable pipewire
+systemctl --user enable wireplumber
 systemctl enable bluetooth
 systemctl enable NetworkManager
 systemctl enable sddm
