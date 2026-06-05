@@ -24,15 +24,19 @@ end
 local profile = read_profile()
 
 local function set_spotify_scale(scale)
-	hl.exec_cmd("sed -i 's/force-device-scale-factor=[0-9.]\\+/force-device-scale-factor=" .. scale .. "/' ~/.config/spotify-launcher.conf")
+	hl.exec_cmd(
+		"sed -i 's/force-device-scale-factor=[0-9.]\\+/force-device-scale-factor="
+			.. scale
+			.. "/' ~/.config/spotify-launcher.conf"
+	)
 end
 
 if profile == "tv" then
 	hl.monitor({ output = "HDMI-A-3", mode = "2560x1440@60", position = "0x0", scale = 2 })
 	set_spotify_scale(3.0)
 else
-	hl.monitor({ output = "DP-1",	mode = "2560x1440@164.96Hz", position = "0x0",	scale = 1 })
-	hl.monitor({ output = "DP-3", mode = "1920x1080@60",	position = "2560x0", scale = 1 })
+	hl.monitor({ output = "DP-1", mode = "2560x1440@164.96Hz", position = "0x0", scale = 1 })
+	hl.monitor({ output = "DP-3", mode = "1920x1080@60", position = "2560x0", scale = 1 })
 	hl.workspace_rule({ workspace = "9", monitor = "DP-3" })
 	hl.monitor({ output = "HDMI-A-3", mode = "2560x1440@60", position = "4480x0", scale = 2 })
 	set_spotify_scale(2.0)
@@ -43,6 +47,7 @@ function apply_profile_after_reload()
 
 	if p == "tv" then
 		hl.exec_cmd("killall qs 2>/dev/null")
+		hl.exec_cmd("sleep 0.5")
 		hl.exec_cmd("qs -c noctalia-shell")
 		set_spotify_scale(3.0)
 		hl.exec_cmd("killall spotify 2>/dev/null; spotify-launcher &")
@@ -114,7 +119,9 @@ hl.on("hyprland.start", function()
 	local p = profile
 	if p == "tv" then
 		hl.timer(function()
-			hl.exec_cmd("hyprctl eval 'hl.monitor({output = \"DP-1\", disabled = true})' && hyprctl eval 'hl.monitor({output = \"DP-3\", disabled = true})' && hyprctl eval 'apply_profile_after_reload()'")
+			hl.exec_cmd(
+				"hyprctl eval 'hl.monitor({output = \"DP-1\", disabled = true})' && hyprctl eval 'hl.monitor({output = \"DP-3\", disabled = true})' && hyprctl eval 'apply_profile_after_reload()'"
+			)
 		end, { timeout = 500 })
 	else
 		hl.timer(function()
