@@ -2,7 +2,8 @@ local terminal = "kitty"
 -- local browser = "firefox"
 -- local browser2 = "qutebrowser"
 local fileManager = "dolphin"
-local menu = "wofi --show drun --columns 1"
+-- local menu = "wofi --show drun --columns 1"
+local menu = "qs -c noctalia-shell ipc call launcher toggle"
 local clipboard = "cliphist list | wofi -S dmenu | cliphist decode | wl-copy"
 
 local mainMod = "ALT" -- Sets "Windows" key as main modifier
