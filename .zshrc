@@ -1,4 +1,6 @@
-# If you come from bash you might have to change your $PATH.
+autoload -Uz compinit
+compinit
+
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH=$HOME/go/bin":$HOME/.cargo/bin":$PATH
 export PATH=$HOME/.atuin/bin:$PATH
@@ -7,11 +9,8 @@ export PATH=$HOME/.atuin/bin:$PATH
 export PATH=/home/matan/.opencode/bin:$PATH
 
 plugins=(
-  git
+    git
 )
-
-# Source plugins
-source "${HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # History
 HISTFILE=~/.zsh_history
@@ -59,5 +58,5 @@ eval "$(atuin init zsh)"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
