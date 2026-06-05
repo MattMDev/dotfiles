@@ -1,5 +1,6 @@
 local music = "spotify-launcher"
 local browser = "firefox"
+local terminal = "kitty"
 local wallpaper = "hyprpaper"
 local bar = "qs -c noctalia-shell"
 local steam = "steam"
@@ -32,6 +33,9 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("wl-paste --type image --watch cliphist store")
 
 	organize_workspaces()
+
+	hl.exec_cmd(terminal, { workspace = 1 })
+	hl.exec_cmd(terminal, { workspace = 2 })
 
 	hl.exec_cmd(browser)
 	hl.exec_cmd(music)
