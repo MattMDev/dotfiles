@@ -72,6 +72,7 @@ function apply_profile_after_reload()
 	end
 
 	hl.exec_cmd("killall qs 2>/dev/null")
+	hl.exec_cmd("sleep 0.5")
 	hl.exec_cmd("qs -c noctalia-shell")
 	set_spotify_scale(2.0)
 	hl.exec_cmd("killall spotify 2>/dev/null; spotify-launcher &")
@@ -86,11 +87,11 @@ function toggle_monitor_profile()
 
 	if next == "tv" then
 		hl.exec_cmd(
-			"hyprctl reload && hyprctl eval 'hl.monitor({output = \"DP-1\", disabled = true})' && hyprctl eval 'hl.monitor({output = \"DP-3\", disabled = true})' && hyprctl eval 'apply_profile_after_reload()'"
+			"hyprctl reload && hyprctl eval 'hl.monitor({output = \"DP-1\", disabled = true})' && hyprctl eval 'hl.monitor({output = \"DP-3\", disabled = true})'"
 		)
 	else
 		hl.exec_cmd(
-			"hyprctl reload && hyprctl eval 'hl.monitor({output = \"HDMI-A-3\", disabled = true})' && hyprctl eval 'apply_profile_after_reload()'"
+			"hyprctl reload && hyprctl eval 'hl.monitor({output = \"HDMI-A-3\", disabled = true})'"
 		)
 	end
 end
