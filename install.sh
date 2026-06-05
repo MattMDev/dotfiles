@@ -82,3 +82,6 @@ systemctl --user enable wireplumber
 systemctl enable bluetooth
 systemctl enable NetworkManager
 systemctl enable sddm
+
+# Disable playstation kernel drive (conflicts with USB dualsense)
+# echo "blacklist hid_playstation" | sudo tee /etc/modprobe.d/dualsense.conf
